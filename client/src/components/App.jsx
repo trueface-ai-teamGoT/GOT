@@ -26,7 +26,7 @@ class App extends React.Component {
   }
 
   onDrop(acceptedFiles) {
-        const req = request.post('/testpath');
+        const req = request.post('http://0.0.0.0:5000/');
         acceptedFiles.forEach(file => {
             req.attach(file.name, file);
         });
