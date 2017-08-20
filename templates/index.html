@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GOT discover</title>
+    <!-- <link href={{ url_for('static', filename='main.css') }} rel="stylesheet" media="screen"> -->
+  </head>
+  <body>
+
+    <h1> Game of thrones Game <h1>
+    <p>figure out which game of thrones characters you would be</p>
+
+    <h2> Please enter an image </h2>
+
+    <form action="../GOTRegognition.py" method= "Post">
+      <input type="file" name="img" accept="image/*">
+      <input type="submit">
+    </form>
+
+
+    <h2> You score </h2>
+
+    <p> {{data}} <p>
+        
+
+  </body>
+</html>
