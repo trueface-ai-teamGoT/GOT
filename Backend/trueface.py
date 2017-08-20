@@ -5,7 +5,7 @@ import os
 import time
 
 headers = {
-  "x-api-key":"lFxBTdfFslAFtFKzPohk53q9ZJhp3nD9tr3VfSv9 ",
+  "x-api-key":"key",
   "Content-Type":"application/json",
 }
 
@@ -76,8 +76,14 @@ def saveCollectionId(collection_id):
         cidfile.write(collection_id)
 
 def getCollectionId():
+    try:
+        with open('collectionid.txt', 'r') as cidfile:
+            return cidfile.readlines()[0]
+    except:
+        setupCollectionAndEnroll()
     with open('collectionid.txt', 'r') as cidfile:
-        return cidfile.readlines()[0]
+            return cidfile.readlines()[0]
+
 
 def saveCharacterIds(chars):
     with open('characterids.txt', 'w') as charfile:
@@ -168,9 +174,14 @@ def setupCollectionAndEnroll():
     training(collectionId)
     time.sleep(5)
 
+def apiIdentify(imageData):
+    collectionId = getCollectionId()
+    id, name, confidence = identifyCharacter(collectionId, imageData)
+    return name, confidence
+
 
 def testIdentify():
-    collectionId = getCollectionId
+    collectionId = getCollectionId()
     id, name, confidence = identifyCharacter(collectionId, base64.b64encode(open('Testimages/jon.jpg','rb').read()).decode('utf-8'))
-    print (id, name, confidence) 
+    print (name, confidence) 
 
