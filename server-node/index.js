@@ -4,10 +4,12 @@ const path = require('path')
 const router = require('express').Router()
 const IP = process.env.IP || 'localhost'
 const PORT = process.env.PORT || '3000'
+const bodyParser = require('body-parser');
 const app = express()  
+
 // const api = require('../server/helpers/api')
 // const dummyData = require('../database/dummyData').dummyData
-
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
 // app.get('/images/instagram', api.instagram.getInstagramUserImages)
