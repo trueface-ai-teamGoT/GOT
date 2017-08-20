@@ -1,0 +1,33 @@
+{
+  "name": "game_of_thrones",
+  "version": "1.0.0",
+  "description": "which game of thrones character do you look like?",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack -d --watch",
+    "build": "webpack -p",
+    "start": "nodemon server-node/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "express": "^4.15.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-images-uploader": "^1.1.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trueface-ai-teamGoT/GOT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trueface-ai-teamGoT/GOT/issues"
+  },
+  "homepage": "https://github.com/trueface-ai-teamGoT/GOT#readme"
+}
