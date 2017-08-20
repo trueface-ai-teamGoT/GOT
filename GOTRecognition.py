@@ -1,8 +1,35 @@
+from flask import Flask,requests, redirect, url_for, render_template
+import os
+
+
+app = Flask(__name__)
+
 from Backend import trueface
 import time
 import base64
 
-name, conf = trueface.apiIdentify(base64.b64encode(open('Testimages/jon.jpg','rb').read()).decode('utf-8'))
-print(name, conf)
-#time.sleep(10)
-#trueface.testIdentify()
+
+
+@app.route('/', methods=['POST'])
+def index():
+ 
+    if request.method == "POST":
+ 
+        image = request
+
+        print request
+ 
+        try:
+
+			name, conf = trueface.apiIdentify(image).read()).decode('utf-8'))	
+
+	    return name, conf
+	 
+        except:
+            jsonify({"sorry": "Sorry, no results! Please try again."}), 500
+
+
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
+
