@@ -20,13 +20,14 @@ def index():
 
     if request.method == "POST":
         # image = request.form.post('img')
-        image = request.files.to_dict()['no_pen.jpg']
-        print request.files.to_dict()['no_pen.jpg']
-        print 'after the try'
+        image = request.files.to_dict().items()[0][1]
+        print request.files.to_dict().items()[0][1]
         name, conf = trueface.apiIdentify(base64.b64encode(image.read()).decode('utf-8'))	
         try:
             print 'try'
-            return render_template("index.html", data=(name, conf))
+            return name
+            # return render_template("index.html", data=(name, conf))
+            # return name
         except Exception,e:
             print e
             # jsonify({"sorry": "Sorry, no results! Please try again."}, 500)

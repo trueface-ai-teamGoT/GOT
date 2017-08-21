@@ -5,7 +5,7 @@ import os
 import time
 
 headers = {
-  "x-api-key":"key",
+  "x-api-key":"lFxBTdfFslAFtFKzPohk53q9ZJhp3nD9tr3VfSv9",
   "Content-Type":"application/json",
 }
 
