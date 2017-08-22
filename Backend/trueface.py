@@ -5,7 +5,7 @@ import os
 import time
 
 headers = {
-  "x-api-key":"lFxBTdfFslAFtFKzPohk53q9ZJhp3nD9tr3VfSv9",
+  "x-api-key": "your_api_key",
   "Content-Type":"application/json",
 }
 
@@ -38,7 +38,7 @@ def identifyCharacter(collectionID, image):
     success = r['success']
     #print (r)
     if not success:
-        raise Exception('Not successful')
+        raise Exception('Not in our database')
     id = r['data'][0]['key']
     name = r['data'][0]['name']
     confidence = r['data'][0]['confidence']
@@ -180,8 +180,8 @@ def apiIdentify(imageData):
     return name, confidence
 
 
-def testIdentify():
-    collectionId = getCollectionId()
-    id, name, confidence = identifyCharacter(collectionId, base64.b64encode(open('Testimages/jon.jpg','rb').read()).decode('utf-8'))
-    print (name, confidence) 
+# def testIdentify():
+#     collectionId = getCollectionId()
+#     id, name, confidence = identifyCharacter(collectionId, base64.b64encode(open('Testimages/jon.jpg','rb').read()).decode('utf-8'))
+#     print (name, confidence) 
 

@@ -1,4 +1,3 @@
-
 from flask import Flask, redirect, url_for, render_template, request
 import os
 
@@ -14,31 +13,27 @@ import base64
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-     
-    # return  base64.b64encode(open('Testimages/jon.jpg','rb').read()).decode('utf-8')
-    # name, conf =  base64.b64encode(open('Testimages/jon.jpg','rb').read()).decode('utf-8')
+    return render_template("index.html")
 
-    if request.method == "POST":
-        # image = request.form.post('img')
-        image = request.files.to_dict().items()[0][1]
-        print request.files.to_dict().items()[0][1]
-        name, conf = trueface.apiIdentify(base64.b64encode(image.read()).decode('utf-8'))	
+
+@app.route('/heros', methods=['POST', 'GET'])
+def heros():
+        image = request.files['img']
+        to_send_image = base64.b64encode(image.read()).decode('utf-8')
+        name, conf = trueface.apiIdentify(to_send_image)   
         try:
-            print 'try'
-            return name
-            # return render_template("index.html", data=(name, conf))
-            # return name
-        except Exception,e:
-            print e
-            # jsonify({"sorry": "Sorry, no results! Please try again."}, 500)
-            # print ("error")
-            return 'error'
-    if request.method == "GET":
-        return 'get request'
+            return render_template("heros.html", data=(name, conf))
+        except Exception as e:
+            # print e
+            # return redirect("http://gameofthrones.wikia.com/wiki/Game_of_Thrones_Wiki", code=302)
+            return redirect(url_for('error'))
 
-    return 'another thing'
+@app.errorhandler(Exception)
+@app.route('/error')
+def error(e):
+    return render_template("error.html")
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='0.0.0.0', port=port)
 

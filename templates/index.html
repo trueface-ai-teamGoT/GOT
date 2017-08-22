@@ -2,25 +2,28 @@
 <html>
   <head>
     <title>GOT discover</title>
-    <!-- <link href={{ url_for('static', filename='main.css') }} rel="stylesheet" media="screen"> -->
+     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+     <!-- Libraries: Bootstrap, jQuery, D3 -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://d3js.org/d3.v2.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.0.1/spin.min.js'></script> 
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"></link>
+
   </head>
   <body>
+    <h1> Visual memory </h1>
+    <p>I love that show / band but forgot the main character name!<br> Oups, what was that colleague s name?<br> Ined facial recognition<br>I need an image based authentication!</p>
+     <img src="https://image.slidesharecdn.com/p4modalverbs-110401060328-phpapp01/95/powerpoint-modal-verbs-18-728.jpg?cb=1301637840" alt="who is it?" />
+    <h2> Please enter an image</h2>
+     <p> Try out our image recognition demo<br>Currently limited to Game of Throne Characters : Jon Snow and Sansa Stark<br>  Enter the image of one of these character to get an identity confimation</p>
+     <p> Please give us a few seconds for an accurate response<p>
+     <img src="http://cimg.tvgcdn.net/i/r/2017/01/31/a1f75b33-ba42-4897-8269-84296c9e04f2/crop/740x445+0+0/thumbnail/770x463/7b9c1ed36165b118f4d1e03fb1525976/hayleyatwell-news.jpg" alt="add a piture" />
 
-    <h1> Game of thrones Game <h1>
-    <p>figure out which game of thrones characters you would be</p>
-
-    <h2> Please enter an image </h2>
-
-    <form action="../GOTRegognition.py" method= "Post">
-      <input type="file" name="img" accept="image/*">
-      <input type="submit">
-    </form>
-
-
-    <h2> You score </h2>
-
-    <p> {{data}} <p>
-        
-
+    <form method="post"  enctype="multipart/form-data" action="{{ url_for('heros') }}">
+     <p><input type="file" name="img" accept=".jpg, .jpeg, .png"></p>
+      <p><button class ='btn btn-warning' type="submit">Send</button></p>
+     </form>
   </body>
 </html>

@@ -1,0 +1,20 @@
+body {
+	position:absolute;
+	padding-top:70px;
+/*	margin-left:35%;*/
+	text-align:center;
+}
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: red;
+    cursor: hand;
+}
