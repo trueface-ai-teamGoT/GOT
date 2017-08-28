@@ -25,13 +25,27 @@ class App extends React.Component {
     this.state = { files: [] }
   }
 
-  onDrop(acceptedFiles) {
-        const req = request.post('http://0.0.0.0:5000/');
+  onDrop2(acceptedFiles) {
+        // const req = request.post('http://0.0.0.0:5000/');
+        const req = request.post('http://localhost:3000/testpath');
         acceptedFiles.forEach(file => {
             req.attach(file.name, file);
         });
         req.end(console.log('req ended'));
     }
+
+  onDrop(file) {
+    let photo = new FormData();
+    photo.append('photo', file[0]);
+    let test = 'test'
+    console.log('this is the photo', photo)
+    request.post('/testpath')
+      .send(photo)
+      .end(function(err, resp) {
+        if (err) { console.error(err); }
+        return resp;
+      });
+  }
 
   render() {
     return (
